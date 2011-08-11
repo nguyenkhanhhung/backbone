@@ -1,0 +1,26 @@
+package_assets: on
+embed_assets: on
+template_function: _.template
+package_path: packages
+javascript_compressor: closure
+
+
+javascripts:
+  workspace:
+    - public/javascripts/vendor/*.js
+    - public/javascripts/application.js
+    - public/javascripts/lib/bindable.js
+    - public/javascripts/lib/set.js
+    - public/javascripts/lib/*.js
+    - public/javascripts/**/*.js
+    - app/views/workspace/*.jst
+    - app/views/**/*.jst
+
+stylesheets:
+  common:
+    - public/stylesheets/vendor/reset.css
+    - public/stylesheets/ui/*.css
+  workspace:
+    - public/stylesheets/pages/workspace.css
+  empty:
+    - public/stylesheets/pages/empty.css

@@ -4,7 +4,9 @@ App.Views.Edit = Backbone.View.extend({
     },
 
     initialize: function() {
-        this.render();
+      _.bindAll(this, 'render');
+      this.model.bind('change', this.render);
+      this.render();
     },
 
     save: function() {
@@ -30,21 +32,8 @@ App.Views.Edit = Backbone.View.extend({
     },
 
     render: function() {
-        var out = '<form>';
-        out += "<label for='title'>Title</label>";
-        out += "<input name='title' type='text' />";
-
-        out += "<label for='body'>Body</label>";
-        out += "<textarea name='body'>" + (this.model.escape('body') || '') + "</textarea>";
-
-        var submitText = this.model.isNew() ? 'Create' : 'Save';
-
-        out += "<button>" + submitText + "</button>";
-        out += "</form>";
-
-        $(this.el).html(out);
+        $(this.el).html(JST.document({ model: this.model }));
         $('#app').html(this.el);
-
         this.$('[name=title]').val(this.model.get('title')); // use val, for security reasons
     }
 });

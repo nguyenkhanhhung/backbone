@@ -2,4 +2,7 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-Backbone::Application.initialize!
+Backbone::Application.initialize! do
+  config.gem "jammit"
+end
+
